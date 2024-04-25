@@ -1,8 +1,8 @@
-= { New Group Name } { New Group Type } Charter
+= Composable Extensions Task Group Charter
 
 == Introduction
 
-The {New Group Name} {New Group Type} aims to [INSERT CLEAR, CONCISE OVERALL MISSION STATEMENT IN 2-3 SENTENCES].
+The Composable Extensions Task Group aims to [INSERT CLEAR, CONCISE OVERALL MISSION STATEMENT IN 2-3 SENTENCES].
 
 == Definitions (Optional)
 
