@@ -12,25 +12,27 @@ enable practical reuse, within a system, of multiple, independently
 authored composable custom extensions (CXs), CX libraries, and CX unit
 modules, remaining backwards compatible with legacy custom extensions.
 
-* *CX ISA* extension(s) provide CX multiplexing (muxing), CX access control,
+* *CX ISA* extension(s) provide CX multiplexing, CX access control,
   and CX state context management.
 
-  * *CX muxing* enables multiple CXs to coexist within a system, conflict free;
-    software selects the hart’s CX and CX state context, prior to issuing
-    that CX’s custom instructions and accessing its custom CSRs.
+  * *CX multiplexing* enables multiple CXs to coexist within a system,
+    conflict free; software selects the hart’s CX and CX state context,
+    prior to issuing that CX’s custom instructions and accessing its
+    custom CSRs.
   
-  * *CX access control* enables priv code to grant/deny unpriv code access
-    to specific CX state contexts.
+  * *CX access control* enables more privileged code to grant/deny less
+    privileged code access to specific CXs and state contexts.
   
-  * *CX state context management* enables an OS to save, reload, and manage
-    any CX state context.
+  * *CX state context management* enables a CX to have any number of
+    CX state contexts and an OS to save, reload, and manage any CX state
+    context.
 
 * *CX API* provides CX libraries with a uniform CX programming model,
   including CX naming, discovery, versioning, state management, and
   error handling.
 
 * *CX ABI* ensures correct nested library composition via disciplined
-  save/restore of the CX mux selection.
+  management of CX multiplexing state and CX state context.
 
 * *CXU logic interface* is an optional interop interface standard enabling
   reuse of modular CXU hardware via automated composition of a DAG of
@@ -54,22 +56,29 @@ modification of other CPUs or CXUs.
 
 5. *Frugality:* Prefer simpler induced hardware and shorter code paths.
 
-6. *Security:* The specifications include a vulnerability assessment
-and do not facilitate new side channel attacks.
+6. *Security:* The specifications include a security assessment to
+ensure composable extensions do not introduce extension or system
+vulnerabilities, and do not facilitate new side channel attacks.
 
-7. *Longevity:* The specifications define how each interface may be
-versioned over decades, and incorporate mechanisms to improve forwards
-compatibility.
+7. *Longevity:* The specifications incorporate mechanisms to improve
+forwards compatibility with future composable extensions specifications.
 
 ## Acceptance criteria
 
 Each deliverable must be implemented and proven in nontrivial interop
-plugfest scenarios involving multiple processors x extensions x extension
+plug-fest scenarios involving multiple processors x extensions x extension
 libraries x OSs.
+
+REVIEW: SAIL, Spike, QEMU?
 
 ## Exclusions
 
-Not every arbitrary custom extension can be a composable extension!
+Not every arbitrary custom extension can be a composable extension, so
+the CX TG will specify which custom extensions are composable extensions.
+Custom extensions that access only extension state and integer registers
+are composable extensions, whereas other custom extensions that access
+e.g., floating point registers, vector registers, shared memory, arbitrary
+CSRs, etc., _may or may not be_ (yet to be determined).
 
 The CX TG is focused on the minimum set of standards *enabling*
 practical composition of extensions and software. Further standards
@@ -79,6 +88,8 @@ and tools, are _out of scope_.
 
 ## Collaborations
 
+The CX TG governing committee is Privileged IC.
+
 The CX framework will enable many ongoing and future unpriv extension
 TGs to provide their extension as a composable extension. CX multiplexing
 reduces the opcode and CSR impact of such extensions to zero, extending
@@ -87,9 +98,34 @@ provides such extensions a uniform forwards compatible versioning story.
 A modular CXU implementation would enable that extension in any
 CXU-LI-compliant CPU cores.
 
-### Overlaps (incomplete!)
+The CX TG will interact with: Unified Discovery TG, Platform Runtime
+Services TG, SoftCPU SIG, Toolchains & Runtimes SIG.
 
-* CX API's CX discovery services may overlap uniform discovery TG
+REVIEW: what about RISE, RVM-CSI SIG?
+
+### Possible Overlaps
+
+The CX TG will ensure its specification(s) harmonize and resolve overlaps
+with the following TGs and specifications notwithstanding the objective
+of routine, practical reuse of composable custom extensions.
+
+* CX muxing ISA and CX state context management ISA may overlap Smstateen/Ssstateen
+
+* CX muxing ISA's support for custom CSRs may overlap Smcrind/Sscrind
+
+* CX API's CX discovery services may overlap
+
+  * tech-config (Unified Discovery) to convey system config to machine mode
+
+  * tech-prs (Platform Runtime Services) to convey system config to
+    supervisor mode (devicetree, UEFI), SBI if necessary
+
+* CX ABI may overlap
+
+  * tech-psabi (ABI)
+
+  * sig-toolchains for compiler ABI support, function attributes and/or
+    intrinsics
 
 ## History
 
@@ -101,4 +137,5 @@ extensible RISC-V cores might enable a marketplace of reusable custom
 extensions and libraries. In 2019-2022, members met to define a
 *minimum viable set* of interop interfaces, now the
 [Draft Proposed RISC-V Composable Custom Extensions Specification](https://raw.githubusercontent.com/grayresearch/CX/main/spec/spec.pdf),
-proposed as a starting point for CX TG.
+proposed as a basis (reference) spec for CX TG.
+
