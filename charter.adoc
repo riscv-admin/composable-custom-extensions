@@ -17,28 +17,22 @@ modules, remaining backwards compatible with legacy custom extensions.
 
   * *CX multiplexing* enables multiple CXs to coexist within a system,
     conflict free; software selects the hart’s CX and CX state context,
-    prior to issuing that CX’s custom instructions and accessing its
-    custom CSRs.
+    prior to issuing CX custom instructions and CX CSR accesses.
   
   * *CX access control* enables more privileged code to grant/deny less
     privileged code access to specific CXs and state contexts.
   
-  * *CX state context management* enables a CX to have any number of
-    CX state contexts and an OS to save, reload, and manage any CX state
-    context.
+  * *CX state context management* enables an OS to save, reload, and
+    manage any CX state context.
 
-* *CX API* provides CX libraries with a uniform CX programming model,
-  including CX naming, discovery, versioning, state management, and
-  error handling.
+* *CX API* provides a uniform CX programming model, including CX naming,
+  discovery, versioning, state management, and error handling.
 
 * *CX ABI* ensures correct nested library composition via disciplined
-  management of CX multiplexing state and CX state context.
+  management of CX multiplexing.
 
-* *CXU logic interface* is an optional interop interface standard enabling
-  reuse of modular CXU hardware via automated composition of a DAG of
-  CPUs and CXUs into one system. With CXU-LI, each CXU implements one
-  or more CXs, and, in response to a CX instruction, muxing delegates
-  it to the selected CX/CXU.
+* *CXU logic interface*, optional, enables modular CXU hardware and
+  automated composition of a DAG of CPUs and CXUs into one system.
 
 The TG specifications should aim to balance these design tenets:
 
@@ -48,37 +42,26 @@ when used alongside other CXs.
 2. *Decentralization:* Anyone may define or use a CX without coordination
 with others, and without resort to a central authority.
 
-3. *Stable binaries:* CX library *binaries* compose without rewriting,
-recompilation or relinking.
+3. *Stable binaries:* CX library *binaries* compose without recompilation
+or relinking.
 
 4. *Composable hardware:* Adding a CXU to a system does not require
 modification of other CPUs or CXUs.
 
-5. *Frugality:* Prefer simpler induced hardware and shorter code paths.
+5. *Security:* Specifications include a security assessment, and do not
+facilitate new side channel attacks.
 
-6. *Security:* The specifications include a security assessment to
-ensure composable extensions do not introduce extension or system
-vulnerabilities, and do not facilitate new side channel attacks.
-
-7. *Longevity:* The specifications incorporate mechanisms to improve
-forwards compatibility with future composable extensions specifications.
+6. *Longevity:* Specifications incorporate mechanisms to improve forwards
+compatibility with future specifications.
 
 ## Acceptance criteria
 
-Each deliverable must be implemented and proven in nontrivial interop
-plug-fest scenarios involving multiple processors x extensions x extension
-libraries x OSs.
-
-REVIEW: SAIL, Spike, QEMU?
+Specifications will be implemented and proven in interop plug-fests
+of multiple processors x extensions x extension libraries x OSs.
 
 ## Exclusions
 
-Not every arbitrary custom extension can be a composable extension, so
-the CX TG will specify which custom extensions are composable extensions.
-Custom extensions that access only extension state and integer registers
-are composable extensions, whereas other custom extensions that access
-e.g., floating point registers, vector registers, shared memory, arbitrary
-CSRs, etc., _may or may not be_ (yet to be determined).
+Not every arbitrary custom extension can be a composable extension.
 
 The CX TG is focused on the minimum set of standards *enabling*
 practical composition of extensions and software. Further standards
@@ -90,52 +73,17 @@ and tools, are _out of scope_.
 
 The CX TG governing committee is Privileged IC.
 
-The CX framework will enable many ongoing and future unpriv extension
-TGs to provide their extension as a composable extension. CX multiplexing
-reduces the opcode and CSR impact of such extensions to zero, extending
-the life of the 32b encodings. In addition, CX discovery and versioning
-provides such extensions a uniform forwards compatible versioning story.
-A modular CXU implementation would enable that extension in any
-CXU-LI-compliant CPU cores.
+The CX framework will enable certain ongoing and future unpriv extension
+TGs to provide their extension as a composable extension and a CXU module.
 
-The CX TG will interact with: Unified Discovery TG, Platform Runtime
-Services TG, SoftCPU SIG, Toolchains & Runtimes SIG.
-
-REVIEW: what about RISE, RVM-CSI SIG?
-
-### Possible Overlaps
-
-The CX TG will ensure its specification(s) harmonize and resolve overlaps
-with the following TGs and specifications notwithstanding the objective
-of routine, practical reuse of composable custom extensions.
-
-* CX muxing ISA and CX state context management ISA may overlap Smstateen/Ssstateen
-
-* CX muxing ISA's support for custom CSRs may overlap Smcrind/Sscrind
-
-* CX API's CX discovery services may overlap
-
-  * tech-config (Unified Discovery) to convey system config to machine mode
-
-  * tech-prs (Platform Runtime Services) to convey system config to
-    supervisor mode (devicetree, UEFI), SBI if necessary
-
-* CX ABI may overlap
-
-  * tech-psabi (ABI)
-
-  * sig-toolchains for compiler ABI support, function attributes and/or
-    intrinsics
+The CX TG may interact with: Unified Discovery TG, Platform Runtime
+Services TG, SoftCPU SIG, Toolchains & Runtimes SIG, psABI.
 
 ## History
 
-In 2019, the RISC-V Foundation FPGA soft processor SIG members, working
-to advance RISC-V as the preeminent ecosystem for FPGA SoCs, committed to
-"Propose extensions ... to enable interoperable RISC-V FPGA platforms and
-applications". Members set out to define standards by which FPGAs'
-extensible RISC-V cores might enable a marketplace of reusable custom
-extensions and libraries. In 2019-2022, members met to define a
-*minimum viable set* of interop interfaces, now the
-[Draft Proposed RISC-V Composable Custom Extensions Specification](https://raw.githubusercontent.com/grayresearch/CX/main/spec/spec.pdf),
-proposed as a basis (reference) spec for CX TG.
-
+Since 2019, the SoftCPU SIG has worked to address the gaps that
+make reuse of custom extensions difficult, for a marketplace of
+extensions IP. The SIG designed a *minimum viable set* of interop
+interfaces, the
+https://raw.githubusercontent.com/grayresearch/CX/main/spec/spec.pdf[Draft Proposed RISC-V Composable Custom Extensions Specification],
+now proposed as a basis (reference) spec for CX TG.
