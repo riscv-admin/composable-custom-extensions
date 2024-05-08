@@ -4,7 +4,7 @@ Reuse of multiple custom extensions is rare, in part because extensions
 may conflict in use of custom instructions and CSRs, and because there
 is no common programming model or API for discovering, using, and
 managing such extensions. This leads to disjoint solution silos and
-ecosystem fragmentation. This TG will fix this.
+ecosystem fragmentation.
 
 The TG will specify ISA extension(s) (CX ISA) plus interop interface
 standards (CX API, CX ABI, and CX Unit logic interface (CXU-LI)) that
