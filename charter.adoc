@@ -2,88 +2,51 @@
 
 Reuse of multiple custom extensions is rare, in part because extensions
 may conflict in use of custom instructions and CSRs, and because there
-is no common programming model or API for discovering, using, and
-managing such extensions. This leads to disjoint solution silos and
-ecosystem fragmentation.
+is no common programming model or API for such extensions. This can lead
+to disjoint solution silos and ecosystem fragmentation.
 
-The TG will specify ISA extension(s) (CX ISA) plus interop interface
-standards (CX API, CX ABI, and CX Unit logic interface (CXU-LI)) that
-enable practical reuse, within a system, of multiple, independently
-authored composable custom extensions (CXs), CX libraries, and CX unit
-modules, remaining backwards compatible with legacy custom extensions.
+The TG will develop ISA and non-ISA specifications to facilitate
+the decentralized, cooperative reuse of the custom instruction and
+CSR space, enabling practical reuse, within a system, of multiple,
+independently authored composable custom extensions (CXs), CX libraries,
+and CX unit (CXU) modules, remaining backwards compatible with legacy
+custom extensions.
 
-* *CX ISA* extension(s) provide CX multiplexing, CX access control,
-  and CX state context management.
+ISA extensions provide *CX multiplexing*, enabling multiple CXs to coexist
+within a system, conflict free, *CX access control*, enabling privileged
+code to grant/deny access to specific CXs and state contexts, and *CX
+state context management*, enabling an OS to manage any CX state context.
 
-  * *CX multiplexing* enables multiple CXs to coexist within a system,
-    conflict free; software selects the hart’s CX and CX state context,
-    prior to issuing CX custom instructions and CX CSR accesses.
-  
-  * *CX access control* enables more privileged code to grant/deny less
-    privileged code access to specific CXs and state contexts.
-  
-  * *CX state context management* enables an OS to save, reload, and
-    manage any CX state context.
+Non-ISA *CX API* and *CX ABI* specifications provide a uniform CX
+programming model, including CX naming, discovery, versioning, state
+management, and error handling, and ensure correct nested CX library
+composition. An optional *CXU logic interface* enables modular CXU
+hardware and automated composition of a DAG of CPUs and CXUs into
+one system.
 
-* *CX API* provides a uniform CX programming model, including CX naming,
-  discovery, versioning, state management, and error handling.
-
-* *CX ABI* ensures correct nested library composition via disciplined
-  management of CX multiplexing.
-
-* *CXU logic interface*, optional, enables modular CXU hardware and
-  automated composition of a DAG of CPUs and CXUs into one system.
-
-The TG specifications should aim to balance these design tenets:
-
-1. *Composability:* The behavior of a CX or CX library does not change
-when used alongside other CXs.
-
-2. *Decentralization:* Anyone may define or use a CX without coordination
-with others, and without resort to a central authority.
-
-3. *Stable binaries:* CX library *binaries* compose without recompilation
-or relinking.
-
-4. *Composable hardware:* Adding a CXU to a system does not require
-modification of other CPUs or CXUs.
-
-5. *Security:* Specifications include a security assessment, and do not
-facilitate new side channel attacks.
-
-6. *Longevity:* Specifications incorporate mechanisms to improve forwards
-compatibility with future specifications.
+Overall, these specifications support *dependable composition* of CXs
+and CX libraries, *decentralization* so anyone may define a CX without
+coordination with others, and *stable binaries* so CX libraries compose,
+unchanged. They apply *simple, fast, and frugal* mechanisms appropriate
+across the *diversity* of RISC-V systems. They address *security* and
+*forwards compatibility* concerns.
 
 ## Acceptance criteria
 
-Specifications will be implemented and proven in interop plug-fests
-of multiple processors x extensions x extension libraries x OSs.
+A Proof-of-Concept will be developed with reference designs for all
+components that are specified, demonstrating interoperation where merited.
 
 ## Exclusions
 
-Not every arbitrary custom extension can be a composable extension.
-
-The CX TG is focused on the minimum set of standards *enabling*
-practical composition of extensions and software. Further standards
-for infrastructure and tooling e.g. for CX packages, debug, profile,
-formal specification of CX interface contracts, CX library metadata,
-and tools, are _out of scope_.
+The CX TG is focused on the minimum set of standards *enabling* practical
+composition of extensions and software. Other standards for infrastructure
+and tooling e.g. for CX packages, debug, profile, formal specification of
+CX interface contracts, CX library metadata, and tools, can be addressed
+in follow-on TGs.
 
 ## Collaborations
 
 The CX TG governing committee is Privileged IC.
 
-The CX framework will enable certain ongoing and future unpriv extension
-TGs to provide their extension as a composable extension and a CXU module.
-
 The CX TG may interact with: Unified Discovery TG, Platform Runtime
 Services TG, SoftCPU SIG, Toolchains & Runtimes SIG, psABI.
-
-## History
-
-Since 2019, the SoftCPU SIG has worked to address the gaps that
-make reuse of custom extensions difficult, for a marketplace of
-extensions IP. The SIG designed a *minimum viable set* of interop
-interfaces, the
-https://raw.githubusercontent.com/grayresearch/CX/main/spec/spec.pdf[Draft Proposed RISC-V Composable Custom Extensions Specification],
-now proposed as a basis (reference) spec for CX TG.
