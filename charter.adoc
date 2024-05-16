@@ -5,36 +5,38 @@ may conflict in use of custom instructions and CSRs, and because there
 is no common programming model or API for such extensions. This can lead
 to disjoint solution silos and ecosystem fragmentation.
 
-The TG will develop ISA and non-ISA specifications to facilitate
-the decentralized, cooperative reuse of the custom instruction and
+The TG will develop ISA and non-ISA specifications to facilitate the
+decentralized, cooperative reuse of the custom instruction and custom
 CSR space, enabling practical reuse, within a system, of multiple,
 independently authored composable custom extensions (CXs), CX libraries,
-and CX unit (CXU) modules, remaining backwards compatible with legacy
-custom extensions.
+and CX unit (CXU) modules, while also remaining backwards compatible
+with legacy custom extensions.
 
-ISA extensions provide *CX multiplexing*, enabling multiple CXs to coexist
-within a system, conflict free, *CX access control*, enabling privileged
-code to grant/deny access to specific CXs and state contexts, and *CX
-state context management*, enabling an OS to manage any CX state context.
+ISA extensions provide: *CX multiplexing*, enabling multiple CXs to
+coexist conflict-free within a system; *CX access control*, enabling
+privileged code to grant/deny access to specific CXs and state contexts;
+and *CX state context management*, enabling an OS to manage any CX
+state context.
 
-Non-ISA *CX API* and *CX ABI* specifications provide a uniform CX
-programming model, including CX naming, discovery, versioning, state
-management, and error handling, and ensure correct nested CX library
-composition. An optional *CXU logic interface* enables modular CXU
-hardware and automated composition of a DAG of CPUs and CXUs into
-one system.
+Non-ISA *CX API* and *CX ABI* specifications provide a uniform
+CX programming model (including CX naming, discovery, versioning,
+state management, and error handling) and correct composition of CX
+libraries. An optional *CXU logic interface* enables portable, modular
+CXU hardware, and automated composition of CPUs and CXUs into one system.
 
-Overall, these specifications support *dependable composition* of CXs
-and CX libraries, *decentralization* so anyone may define a CX without
-coordination with others, and *stable binaries* so CX libraries compose,
-unchanged. They apply *simple, fast, and frugal* mechanisms appropriate
-across the *diversity* of RISC-V systems. They address *security* and
-*forwards compatibility* concerns.
+Overall, these specifications will support *dependable composition*
+of CXs and CX libraries, *decentralization* so that a CX may be defined
+without involving other parties, and *stable binaries* so CX libraries
+compose without adaptation. They apply *simple, fast, and frugal*
+mechanisms appropriate across the *diversity* of RISC-V systems. They
+will address *security* and *forwards compatibility* concerns.
 
 ## Acceptance criteria
 
 A Proof-of-Concept will be developed with reference designs for all
 components that are specified, demonstrating interoperation where merited.
+New ISA specifications will be accompanied by corresponding SAIL and
+ACT tests.
 
 ## Exclusions
 
