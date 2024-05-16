@@ -24,12 +24,12 @@ state management, and error handling) and correct composition of CX
 libraries. An optional *CXU logic interface* enables portable, modular
 CXU hardware, and automated composition of CPUs and CXUs into one system.
 
-Overall, these specifications will support *dependable composition*
-of CXs and CX libraries, *decentralization* so that a CX may be defined
-without involving other parties, and *stable binaries* so CX libraries
-compose without adaptation. They will apply *simple, fast, and frugal*
-mechanisms appropriate across the *diversity* of RISC-V systems. They
-will address *security* and *forwards compatibility* concerns.
+Overall, these specifications support *dependable composition* of CXs
+and CX libraries, *decentralization* so that a CX may be defined without
+involving other parties, and *stable binaries* so CX libraries compose
+without adaptation. They apply *simple, fast, and frugal* mechanisms
+appropriate across the *diversity* of RISC-V systems. They address
+*security* and *forwards compatibility* concerns.
 
 ## Acceptance criteria
 
