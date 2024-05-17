@@ -22,14 +22,15 @@ Non-ISA *CX API* and *CX ABI* specifications provide a uniform
 CX programming model (including CX naming, discovery, versioning,
 state management, and error handling) and correct composition of CX
 libraries. An optional *CXU logic interface* enables portable, modular
-CXU hardware, and automated composition of CPUs and CXUs into one system.
+CXU hardware, and automatic composition of CPUs and CXUs into one system.
 
 Overall, these specifications support *dependable composition* of CXs
 and CX libraries, *decentralization* so that a CX may be defined without
 involving other parties, and *stable binaries* so CX libraries compose
 without adaptation. They apply *simple, fast, and frugal* mechanisms
-appropriate across the *diversity* of RISC-V systems. They address
-*security* and *forwards compatibility* concerns.
+appropriate across a *diversity* of RISC-V systems, from FPGA MCUs to
+datacenter servers. They address *security* and *forward compatibility*
+concerns.
 
 ## Acceptance criteria
 
