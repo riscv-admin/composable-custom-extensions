@@ -12,9 +12,9 @@ independently authored composable custom extensions (CXs), CX libraries,
 and CX unit (CXU) modules, while also remaining backwards compatible
 with legacy custom extensions.
 
-New standard ISA extensions enable multiple composable extensions to
-coexist conflict-free within a system and enable an operating system to
-uniformly support and secure stateful composable extensions.
+New standard ISA extensions will enable multiple composable extensions
+to coexist conflict-free within a system and enable an operating system
+to uniformly support and secure stateful composable extensions.
 
 Non-ISA *CX API* and *CX ABI* specifications provide a uniform
 CX programming model (including CX naming, discovery, versioning,
