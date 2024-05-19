@@ -12,11 +12,9 @@ independently authored composable custom extensions (CXs), CX libraries,
 and CX unit (CXU) modules, while also remaining backwards compatible
 with legacy custom extensions.
 
-ISA extensions provide: *CX multiplexing*, enabling multiple CXs to
-coexist conflict-free within a system; *CX access control*, enabling
-privileged code to grant/deny access to specific CXs and state contexts;
-and *CX state context management*, enabling an OS to manage any CX
-state context.
+New standard ISA extensions enable multiple composable extensions to
+coexist conflict-free within a system and enable an operating system to
+uniformly support and secure stateful composable extensions.
 
 Non-ISA *CX API* and *CX ABI* specifications provide a uniform
 CX programming model (including CX naming, discovery, versioning,
@@ -36,8 +34,8 @@ concerns.
 
 A Proof-of-Concept will be developed with reference designs for all
 components that are specified, demonstrating interoperation where merited.
-New ISA specifications will be accompanied by corresponding SAIL and
-ACT tests.
+The new standard ISA specifications will be accompanied by corresponding
+SAIL and ACT tests.
 
 ## Exclusions
 
