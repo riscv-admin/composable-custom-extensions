@@ -35,7 +35,7 @@ concerns.
 A Proof-of-Concept will be developed with reference designs for all
 components that are specified, demonstrating interoperation where merited.
 The new standard ISA specifications will be accompanied by corresponding
-SAIL and ACT tests.
+Sail and ACT tests.
 
 ## Exclusions
 
