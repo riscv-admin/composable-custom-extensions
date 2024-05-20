@@ -34,8 +34,9 @@ concerns.
 
 A Proof-of-Concept will be developed with reference designs for all
 components that are specified, demonstrating interoperation where merited.
-The new standard ISA extension specifications will be accompanied by
-corresponding Sail and ACT tests.
+
+The extension package defined herein will be accompanied by corresponding
+Sail support and ACT tests.
 
 ## Exclusions
 
