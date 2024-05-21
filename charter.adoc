@@ -42,9 +42,9 @@ Sail support and ACT tests.
 
 The CX TG is focused on the minimum set of standards *enabling*
 practical composition of extensions, extension software, and extension
-hardware. Other standards for infrastructure and tooling e.g. for CX
-packages, debug, profile, formal specification of CX interface contracts,
-CX library metadata, and tools, can be addressed in follow-on TGs.
+hardware. Future TGs may address other standards for infrastructure
+and tooling, such as CX packages, debug, profile, formal specification
+of CX interface contracts, and CX library metadata.
 
 ## Collaborations
 
