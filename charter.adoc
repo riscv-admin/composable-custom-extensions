@@ -15,7 +15,7 @@ independently authored composable custom extensions (CXs), CX libraries,
 and CX unit (CXU) logic modules, while also remaining backwards compatible
 with legacy custom extensions.
 
-In particular the TG will define:
+In particular, the TG will define:
 
 * criteria for a custom extension to be _composable_;
 
