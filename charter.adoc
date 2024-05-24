@@ -3,48 +3,55 @@
 Reuse of multiple custom extensions is rare, in part because extensions
 may conflict in use of custom instructions and CSRs, and because there
 is no common programming model or API for such extensions. This can lead
-to disjoint solution silos and ecosystem fragmentation.
+to disjoint solution silos and ecosystem fragmentation. To help address
+this gap, the TG will advance interop standards that make it easier
+to reuse custom extensions, enabling a plug-and-play ecosystem of such
+extensions.
 
-The TG will develop ISA and non-ISA specifications to facilitate the
+The TG will define ISA and non-ISA specifications to facilitate the
 decentralized, cooperative reuse of the custom instruction and custom
 CSR space, enabling practical reuse, within a system, of multiple,
 independently authored composable custom extensions (CXs), CX libraries,
-and CX unit (CXU) modules, while also remaining backwards compatible
+and CX unit (CXU) logic modules, while also remaining backwards compatible
 with legacy custom extensions.
 
-New standard ISA extensions will enable multiple composable extensions
-to coexist conflict-free within a system and enable an operating system
-to uniformly support and secure stateful composable extensions.
+In particular the TG will define:
 
-Non-ISA *CX API* and *CX ABI* specifications provide a uniform
-CX programming model (including CX naming, discovery, versioning,
-state management, and error handling) and correct composition of CX
-libraries. An optional *CXU logic interface* enables portable, modular
-CXU hardware, and automatic composition of CPUs and CXUs into one system.
+* criteria for a custom extension to be _composable_;
 
-Overall, these specifications support *dependable composition* of CXs
-and CX libraries, *decentralization* so that a CX may be defined without
-involving other parties, and *stable binaries* so CX libraries compose
-without adaptation. They apply *simple, fast, and frugal* mechanisms
-appropriate across a *diversity* of RISC-V systems, from FPGA MCUs to
-datacenter servers. They address *security* and *forward compatibility*
-concerns.
+* ISA extensions that enable multiple composable extensions to coexist
+  conflict-free within a system and enable an operating system to uniformly
+  support and secure stateful composable extensions;
+
+* non-ISA _CX API_ and _CX ABI_ specifications that provide a uniform
+  CX programming model (including naming, discovery, versioning, state
+  management, and error handling) and correct composition of CX libraries;
+
+* an optional non-ISA _CXU logic interface_ specification that enables
+  portable, modular CXU hardware, and automatic composition of CPUs and
+  CXUs into one system.
+
+Overall, these specifications support dependable composition of CXs
+and CX libraries, decentralization so that a CX may be defined without
+involving other parties, and stable binaries so that CX libraries
+compose without adaptation. They apply simple, fast, and frugal
+mechanisms appropriate across a diversity of RISC-V systems, from
+FPGA MCUs to datacenter servers. They address security and forward
+compatibility concerns.
 
 ## Acceptance criteria
 
 A Proof-of-Concept will be developed with reference designs for all
-components that are specified, demonstrating interoperation where merited.
+components that are specified, demonstrating interoperation where deemed
+necessary.
 
 The extension package defined herein will be accompanied by corresponding
 Sail support and ACT tests.
 
 ## Exclusions
 
-The CX TG is focused on the minimum set of standards *enabling*
-practical composition of extensions, extensions software, and extensions
-hardware. Other standards for infrastructure and tooling e.g. for CX
-packages, debug, profile, formal specification of CX interface contracts,
-CX library metadata, and tools, can be addressed in follow-on TGs.
+The CX TG is focused on the minimum set of standards enabling practical
+composition of extensions, extensions software, and extensions hardware.
 
 ## Collaborations
 
