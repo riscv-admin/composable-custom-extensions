@@ -206,7 +206,7 @@ of the other types before work commences.
 
 * Supervisor CX software may be aware of CX implementation properties
   such as context save size or support for flash init, but should not
-  rely on it for proper functional behavior.
+  rely on them for proper functional behavior.
 
 * A hart's CX selection(s) identify the CX to perform custom
   operations.
