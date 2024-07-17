@@ -1,27 +1,27 @@
-# Composable Extensions (CX) Task Group Charter
+# Composable Custom Extensions Task Group Charter
 
-Reuse of multiple custom extensions is rare, in part because extensions
-may conflict in use of custom instructions and CSRs, and because there
-is no common programming model or API for such extensions. This can lead
-to disjoint solution silos and ecosystem fragmentation. To help address
-this gap, the TG will advance interop standards that make it easier
-to reuse custom extensions, enabling a plug-and-play ecosystem of such
-extensions.
+Reuse of multiple custom extensions is rare, in part because custom
+extensions may conflict in use of custom instructions and CSRs,
+and because there is no common programming model or API for custom
+extensions. This can lead to disjoint solution silos and ecosystem
+fragmentation. To help address this gap, the TG will advance interop
+standards that make it easier to reuse certain kinds of custom extensions,
+enabling a plug-and-play ecosystem of such extensions.
 
-The TG will define ISA and non-ISA specifications to facilitate the
-decentralized, cooperative reuse of the custom instruction and custom
-CSR space, enabling practical reuse, within a system, of multiple,
-independently authored composable custom extensions (CXs), CX libraries,
-and CX unit (CXU) logic modules, while also remaining backwards compatible
-with legacy custom extensions.
+The TG will define a framework of ISA and non-ISA specifications that
+together facilitate the decentralized, cooperative reuse of the custom
+instruction and custom CSR space, enabling practical reuse, within a
+system, of multiple, independently authored composable custom extensions
+(CXs), CX libraries, and CX unit (CXU) logic modules, while also remaining
+backwards compatible with legacy custom extensions.
 
 In particular, the TG will define:
 
 * criteria for a custom extension to be _composable_;
 
-* ISA extensions that enable multiple composable extensions to coexist
-  conflict-free within a system and enable an operating system to uniformly
-  support and secure stateful composable extensions;
+* ISA extensions that enable multiple composable custom extensions to
+  coexist conflict-free within a system and enable an operating system to
+  uniformly support and secure stateful composable custom extensions;
 
 * non-ISA _CX API_ and _CX ABI_ specifications that provide a uniform
   CX programming model (including naming, discovery, versioning, state
