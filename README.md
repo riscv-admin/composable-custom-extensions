@@ -6,4 +6,4 @@ Composable Custom Extensions Task Group.
 
 - Mailing list ([tech-composable-extensions](https://lists.riscv.org/g/tech-composable-extensions))
 - Draft [Charter](charter.adoc)
-- Specification ([composable-extensions](https://github.com/riscv/composable-extensions))
+- Specification ([composable-custom-extensions](https://github.com/riscv/composable-custom-extensions))
