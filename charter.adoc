@@ -43,7 +43,9 @@ compatibility concerns.
 
 A Proof-of-Concept will be developed with reference designs for all
 components that are specified, demonstrating interoperation where deemed
-necessary.
+necessary.  This will include an implementation of the API and ABI as
+part of implementing an end-to-end software PoC, including all discovery
+and configuration components.
 
 The extension package defined herein will be accompanied by corresponding
 Sail support and ACT tests.
