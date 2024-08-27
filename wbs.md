@@ -1,11 +1,11 @@
 = Composable Extensions Developement Plan =
 
 1. Specifications
-1.1. ISA Specification Package [3w, 6w, 12w]
+1.1. ISA Specification Package
 1.1.1. privileged opcode and state multiplexing [1w, 2w, 4w]
 1.1.2. unprivileged opcode and state multiplexing [1w, 2w, 4w]
 1.1.3. privileged state management [1w, 2w, 4w]
-1.2. Discovery [8d, 3w, 7w]
+1.2. Discovery
 1.2.1. Unified Discovery [2d, 1w, 2w]
 1.2.2. Devicetree [3d, 1w, 2w]
 1.2.3. ACPI [3d, 1w, 3w]
