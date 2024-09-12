@@ -35,6 +35,10 @@ spec-disc Discovery
 spec-disc-ud Unified Discovery [1w, 2w, 4w]
 spec-disc-dt Devicetree [1w, 2w, 4w]
 spec-disc-acpi ACPI [2w, 3w, 6w]
+spec-sbi SBI extension []
+
+  It is unclear if an SBI extension is necessary.  It will be specified as needed.
+
 spec-linux Linux syscall
 spec-abi User space ABI
 spec-abi-cx Composable custom extension aware calling convention [4w, 6w, 8w]
@@ -51,6 +55,7 @@ rv-act-priv privileged opcode and state multiplexing dep=spec-isa-priv [2w, 3w, 
 rv-act-unpriv unprivileged opcode and state multiplexing dep=spec-isa-unpriv [8d, 2w, 3w]
 rv-act-state privileged state management dep=spec-isa-state [8d, 2w, 3w]
 sw Software ecosystem support
+sw-opensbi OpenSBI support dep=spec-sbi []
 sw-linux Linux support
 sw-linux-dt Devicetree configuration dep=spec-disc-dt [1w, 8d, 2w]
 sw-linux-acpi ACPI configuration dep=spec-disc-acpi [8d, 2w, 3w]
