@@ -28,7 +28,7 @@
 
 spec Specifications
 spec-isa ISA Specification Package
-spec-isa-priv privileged opcode and state multiplexing dep=none owner=unknown [5w, 6w, 8w] progress=0%
+spec-isa-priv privileged opcode and state multiplexing dep=none owner=unknown@example.com [5w, 6w, 8w] progress=0%
 spec-isa-unpriv unprivileged opcode and state multiplexing [3w, 4w, 6w]
 spec-isa-state privileged state management [3w, 4w, 6w]
 spec-disc Discovery

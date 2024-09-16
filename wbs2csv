@@ -43,7 +43,7 @@ while IFS= read line; do
 	dep="${BASH_REMATCH[1]}"
     fi
 
-    if [[ $line =~ owner=([[:alnum:]]+)([[:space:]]|$) ]]; then
+    if [[ $line =~ owner=([[:graph:]]+)([[:space:]]|$) ]]; then
 	owner="${BASH_REMATCH[1]}"
     fi
 
