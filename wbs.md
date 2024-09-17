@@ -24,7 +24,7 @@
 
   Time estimates are work time; scheduling will be done separately.
   For estimating purposes, one day (1d) is eight hours (8h), one week
-  (1w) is five days, and one month (1m) is thirty days.
+  (1w) is five days, and one month (1m) is four weeks.
 
 spec Specifications
 spec-isa ISA Specification Package

@@ -8,7 +8,7 @@ normalize_time () {
 	    h) echo ${BASH_REMATCH[1]} ;;
 	    d) echo $(( ${BASH_REMATCH[1]} * 8 )) ;;
 	    w) echo $(( ${BASH_REMATCH[1]} * 5 * 8 )) ;;
-	    m) echo $(( ${BASH_REMATCH[1]} * 5 * 30 )) ;;
+	    m) echo $(( ${BASH_REMATCH[1]} * 4 * 5 * 8 )) ;;
 	esac
     else
 	echo $1
