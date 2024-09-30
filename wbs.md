@@ -35,17 +35,21 @@ spec-disc Discovery
 spec-disc-ud Unified Discovery [1w, 2w, 4w]
 spec-disc-dt Devicetree [1w, 2w, 4w]
 spec-disc-acpi ACPI [2w, 3w, 6w]
-spec-sbi SBI extension []
+spec-sbi SBI extension [0d, 0d, 0d]
 
   It is unclear if an SBI extension is necessary.  It will be specified as needed.
 
-spec-linux Linux syscall
+spec-linux Linux syscall [2w, 3w, 5w]
 spec-abi User space ABI
 spec-abi-cx Composable custom extension aware calling convention [4w, 6w, 8w]
 spec-abi-legacy Legacy interoperability calling convention [4w, 6w, 8w]
 spec-uapi User space API [1w, 4w, 6w]
 spec-li Logic interface [8w, 12w, 16w]
 rv ISA Specification support
+rv-test RISC-V Test Input []
+
+  Test configuration input
+
 rv-sail SAIL model
 rv-sail-priv privileged opcode and state multiplexing dep=spec-isa-priv []
 rv-sail-unpriv unprivileged opcode and state multiplexing dep=spec-isa-unpriv []
@@ -55,7 +59,7 @@ rv-act-priv privileged opcode and state multiplexing dep=spec-isa-priv [2w, 3w, 
 rv-act-unpriv unprivileged opcode and state multiplexing dep=spec-isa-unpriv [8d, 2w, 3w]
 rv-act-state privileged state management dep=spec-isa-state [8d, 2w, 3w]
 sw Software ecosystem support
-sw-opensbi OpenSBI support dep=spec-sbi []
+sw-opensbi OpenSBI support dep=spec-sbi [0d, 0d, 0d]
 sw-linux Linux support
 sw-linux-dt Devicetree configuration dep=spec-disc-dt [1w, 8d, 2w]
 sw-linux-acpi ACPI configuration dep=spec-disc-acpi [8d, 2w, 3w]
@@ -83,5 +87,57 @@ poc-hw-li Logic interface dep=spec-li [2w, 4w, 6w]
 poc-hw-sampleext Sample extension dep=spec-li [4w, 6w, 8w]
 poc-sampleapp Sample application dep=spec-uapi [2w, 3w, 4w]
 poc-int Integration testing
-poc-int-qemu QEMU model integration testing dep=sw,poc-qemu,poc-sampleapp [3w, 4w, 8w]
-poc-int-hw Hardware implementation integration testing dep=sw,poc-hw,poc-sampleapp [3w, 4w, 8w]
+poc-int-qemu QEMU model integration testing dep=sw,poc-qemu,poc-sampleapp [3w, 4w, 12w]
+poc-int-hw Hardware implementation integration testing dep=sw,poc-hw,poc-sampleapp [3w, 4w, 12w]
+
+freeze Ratification Plan Freeze Milestone
+
+  The sub tasks here represent the tasks on the ratification plan
+  checklist for the freeze milestone.  These are dependency tasks with
+  no real work and reflect dependencies on other tasks.
+
+freeze-isa ISA Freeze Checklist
+freeze-isa-opcode Opcode Support dep=sw-abi-gcc [0d, 0d, 0d]
+
+  Enough opcode encoding to support GCC.
+
+freeze-isa-sim Simulator Support dep=poc-qemu [0d, 0d, 0d]
+
+  Enough simulator support so that basic RISC-V tests can be run.
+
+freeze-isa-psabi psABI dep=spec-abi [0d, 0d, 0d]
+
+  ABI extensions.
+
+freeze-isa-gcc gcc dep=sw-abi [0d, 0d, 0d]
+
+  Support on GCC (optimizations not required).
+
+freeze-isa-llvm llvm [0d, 0d, 0d]
+
+  Support on LLVM (optimizations not required).  [not planned]
+
+freeze-isa-rvtestinput RISC-V Test Input dep=rv-test [0d, 0d, 0d]
+
+  Test configuration input (YAML schema & values, Test Coverage YAML rules).
+
+freeze-isa-rvtest RISC-V Tests dep=rv-act [0d, 0d, 0d]
+
+  Basic tests that do not cover corner cases.
+
+freeze-isa-rvsail RISC-V SAIL dep=rv-sail [0d, 0d, 0d]
+
+  SAIL support.
+
+freeze-nonisa Non-ISA Freeze Checklist
+freeze-nonisa-opensbi OpenSBI dep=sw-opensbi [0d, 0d, 0d]
+
+  Discovery and configuration.  [as needed]
+
+freeze-nonisa-linux Linux dep=sw-linux [0d, 0d, 0d]
+
+  Discovery and configuration, context management, access control.
+
+freeze-nonisa-glibc glibc dep=sw-uapi [0d, 0d, 0d]
+
+  Discovery and configuration, user context management.
