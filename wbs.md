@@ -48,16 +48,52 @@ spec-isa-state privileged state management [3w, 4w, 6w]
 
 spec-disc Discovery
 spec-disc-ud Unified Discovery [1w, 2w, 4w]
+
+  Add schema for identifying composable custom extension on harts and
+  any necessary parameters, such as state size.
+
 spec-disc-dt Devicetree [1w, 2w, 4w]
+
+  Add schema for attributes that identify composable custom extension
+  on harts and any necessary parameters, such as state size.
+
 spec-disc-acpi ACPI [2w, 3w, 6w]
+
+  Add definition for ACPI table for identifying composable custom
+  extension on harts and any necessary parameters, such as state size.
+
 spec-sbi SBI extension [0d, 0d, 0d]
 
   It is unclear if an SBI extension is necessary.  It will be specified as needed.
 
 spec-linux Linux syscall [2w, 3w, 5w]
+
+  Add interfaces to hwprobe, prctl, and sysfs to provide discovery of
+  composable custom extensions and related parameters and control of
+  extension enablement.
+
 spec-abi User space ABI
 spec-abi-cx Composable custom extension aware calling convention [4w, 6w, 8w]
+
+  Define a calling convention for handling composable custom extension
+  framework state on calls between object files that both support this
+  convention.
+
+  Define criteria for use by composable custom extension authors in
+  defining extension specific calling conventions that support similar
+  behavior.
+
 spec-abi-legacy Legacy interoperability calling convention [4w, 6w, 8w]
+
+  Define calling conventions for handling composable custom extension
+  framework state on calls between object files that support
+  composable custom extensions (as defined in spec-abi-cx) and those
+  that do not.
+
+  Define criteria for use by composable custom extension authors in
+  defining extension specific calling conventions that support similar
+  behavior.
+
 spec-uapi User space API [1w, 4w, 6w]
 
   Means to discover a CX by CX GUID.
@@ -68,6 +104,10 @@ spec-uapi User space API [1w, 4w, 6w]
   discuss: Means to release a CX instance.
 
 spec-li Logic interface [8w, 12w, 16w]
+
+  Specify a logic signal level interface for composable custom
+  extensions.
+
 rv ISA Specification support
 rv-test RISC-V Test Input []
 
@@ -75,43 +115,157 @@ rv-test RISC-V Test Input []
 
 rv-sail SAIL model
 rv-sail-priv privileged opcode and state multiplexing dep=spec-isa-priv []
+
+  Implement SAIL support for the privileged opcode and state
+  multiplexing features of the ISA.
+
 rv-sail-unpriv unprivileged opcode and state multiplexing dep=spec-isa-unpriv []
+
+  Implement SAIL support for the unprivileged opcode and state
+  multiplexing features of the ISA.
+
 rv-sail-state privileged state management dep=spec-isa-state []
-rv-act ACT
+
+  Implement SAIL support for the privileged state management features
+  of the ISA.
+
+rv-act Architecture Compliance Tests (ACT)
+
+  All compliance tests should test basic functionality and need not be
+  complete verification tests that cover all corner cases.
+
 rv-act-priv privileged opcode and state multiplexing dep=spec-isa-priv [2w, 3w, 4w]
+
+  Implement compliance tests for the privileged opcode and state
+  multiplexing features of the ISA.
+
 rv-act-unpriv unprivileged opcode and state multiplexing dep=spec-isa-unpriv [8d, 2w, 3w]
+
+  Implement compliance tests for the unprivileged opcode and state
+  multiplexing features of the ISA.
+
 rv-act-state privileged state management dep=spec-isa-state [8d, 2w, 3w]
+
+  Implement compliance tests for the privileged state management features
+  of the ISA.
+
 sw Software ecosystem support
 sw-opensbi OpenSBI support dep=spec-sbi [0d, 0d, 0d]
+
+  Implement the specified SBI extension in OpenSBI.
+
 sw-linux Linux support
 sw-linux-dt Devicetree configuration dep=spec-disc-dt [1w, 8d, 2w]
+
+  Add support to Linux for obtaining the composable custom extension
+  configuration from the specified devicetree attributes.
+
 sw-linux-acpi ACPI configuration dep=spec-disc-acpi [8d, 2w, 3w]
+
+  Add support to Linux for obtaining the composable custom extension
+  configuration from the specified ACPI table.
+
 sw-linux-state Context save and restore dep=spec-isa-state [3w, 4w, 6w]
-sw-linux-syscall Syscall dep=spec-linux [2w, 3w, 5w]
+
+  Add support to Linux for managing composable custom extension
+  framework state and extension state, including saving and restoring
+  state on context switch, allocating memory for state efficiently,
+  and reporting errors.
+
+sw-linux-uabi Linux User Space ABI dep=spec-linux [2w, 3w, 5w]
+
+  Add support to Linux for specified the user space ABI, including
+  hwprobe, prctl, and sysfs support.  Add documentation and self tests
+  as appropriate.
+
 sw-abi User space ABI
 sw-abi-binutils binutils support dep=spec-abi-cx,spec-abi-legacy [3w, 4w, 6w]
+
+  Add support for managing the specified ABI variants to RISC-V ELF
+  files, including support in ld, readelf, and objdump.
+
 sw-abi-gcc gcc support dep=spec-abi-cx,spec-abi-legacy [2w, 3w, 5w]
+
+  Add support for saving and restoring composable custom extension
+  framework state.  Add support for managing the appropriate ABI
+  variants in RISC-V ELF files.
+
 sw-abi-glibc glibc support dep=spec-abi [1w, 2w, 4w]
+
+  Handle user visible framework hart state as necessary, including in
+  setcontext/makecontext and setjmp/longjmp.
+
 sw-uapi User space API
 sw-uapi-glibc glibc support dep=spec-linux,spec-uapi [1w, 2w, 4w]
+
+  Add wrappers in glibc for the specified Linux hwprobe and/or prctl
+  functions.
+
 poc Proof of concept
 poc-qemu QEMU model
 poc-qemu-isa ISA support
 poc-qemu-isa-priv privileged opcode and state multiplexing dep=spec-isa-priv [2w, 4w, 6w]
+
+  Implement a model of the privileged opcode and state multiplexing features of
+  the ISA.
+
 poc-qemu-isa-unpriv unprivileged opcode and state multiplexing dep=spec-isa-unpriv [2w, 3w, 5w]
+
+  Implement a model of the unprivileged opcode and state multiplexing
+  features of the ISA.
+
 poc-qemu-isa-state privileged state management dep=spec-isa-state [2w, 3w, 5w]
+
+  Implement a model of the privileged state management features of the
+  ISA.
+
 poc-qemu-sampleext Sample extension [1w, 2w, 3w]
+
+  Implement a model of a sample composable custom extension that
+  provides all necessary interface with framework and a simple noop
+  function.
+
 poc-hw Hardware implementation
 poc-hw-isa ISA support
 poc-hw-isa-priv privileged opcode and state multiplexing dep=spec-isa-priv [2w, 4w, 6w]
+
+  Implement the privileged opcode and state multiplexing features of
+  the ISA in hardware.
+
 poc-hw-isa-unpriv unprivileged opcode and state multiplexing dep=spec-isa-unpriv [2w, 3w, 5w]
+
+  Implement the unprivileged opcode and state multiplexing
+  features of the ISA in hardware.
+
 poc-hw-isa-state privileged state management dep=spec-isa-state [2w, 3w, 5w]
+
+  Implement the privileged state management features of the ISA in
+  hardware.
+
 poc-hw-li Logic interface dep=spec-li [2w, 4w, 6w]
+
+  Implement the logic level interface to a processor in hardware.
+
 poc-hw-sampleext Sample extension dep=spec-li [4w, 6w, 8w]
+
+  Implement a sample composable custom extension that provides all
+  necessary interface with framework and a simple noop function.
+
 poc-sampleapp Sample application dep=spec-uapi [2w, 3w, 4w]
+
+  Implement the software for a sample application that exercises the
+  basic framework functions and a noop extension function.
+
 poc-int Integration testing
 poc-int-qemu QEMU model integration testing dep=sw,poc-qemu,poc-sampleapp [3w, 4w, 12w]
+
+  Combine completed system software, QEMU model, and application
+  software; test and debug.
+
 poc-int-hw Hardware implementation integration testing dep=sw,poc-hw,poc-sampleapp [3w, 4w, 12w]
+
+  Combine completed system software, hardware implementation, and
+  application software; test and debug.
 
 freeze Ratification Plan Freeze Milestone
 
