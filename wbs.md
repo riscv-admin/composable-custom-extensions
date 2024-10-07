@@ -29,8 +29,23 @@
 spec Specifications
 spec-isa ISA Specification Package
 spec-isa-priv privileged opcode and state multiplexing dep=none owner=unknown@example.com [5w, 6w, 8w] progress=0%
+
+  Means to control access to CXs by less priv code, sufficient for M,
+  M/U, M/S/U, and HV systems.
+  Means to trap, and to trap & emulate, a CX instruction/CSR.
+  discuss: Means to control mapping of CX instances to harts.
+
 spec-isa-unpriv unprivileged opcode and state multiplexing [3w, 4w, 6w]
+
+  Means to select CX(s) to peform custom instructions/CSRs.
+  Means to indicate multiplexing status/errors.
+  discuss: Means to select CX instances(s) to perform opcodes and CSRs.
+
 spec-isa-state privileged state management [3w, 4w, 6w]
+
+  Means to uniformly initialize, save, and restore any CX save record.
+  discuss: Means to support variable sized CX save records.
+
 spec-disc Discovery
 spec-disc-ud Unified Discovery [1w, 2w, 4w]
 spec-disc-dt Devicetree [1w, 2w, 4w]
@@ -44,6 +59,14 @@ spec-abi User space ABI
 spec-abi-cx Composable custom extension aware calling convention [4w, 6w, 8w]
 spec-abi-legacy Legacy interoperability calling convention [4w, 6w, 8w]
 spec-uapi User space API [1w, 4w, 6w]
+
+  Means to discover a CX by CX GUID.
+  Means to request a CX by CX GUID.
+  Means to select CX(s) to perform custom instructions/CSRs.
+  Means to indicate actionable errors.
+  discuss: Means to request another CX instance by CX GUID.
+  discuss: Means to release a CX instance.
+
 spec-li Logic interface [8w, 12w, 16w]
 rv ISA Specification support
 rv-test RISC-V Test Input []
