@@ -30,21 +30,38 @@ spec Specifications
 spec-isa ISA Specification Package
 spec-isa-priv privileged opcode and state multiplexing dep=none owner=unknown@example.com [5w, 6w, 8w] progress=0%
 
-  Means to control access to CXs by less priv code, sufficient for M,
-  M/U, M/S/U, and HV systems.
-  Means to trap, and to trap & emulate, a CX instruction/CSR.
-  discuss: Means to control mapping of CX instances to harts.
+  Specify an ISA extension for more privileged code to grant access to
+  a CX to less privileged code, and to enable privileged code to trap
+  and emulate CX instructions/CSRs.
+
+  If necessary the ISA extension also supports access control to multiple
+  CX instances of the same CX.
 
 spec-isa-unpriv unprivileged opcode and state multiplexing [3w, 4w, 6w]
 
-  Means to select CX(s) to peform custom instructions/CSRs.
-  Means to indicate multiplexing status/errors.
-  discuss: Means to select CX instances(s) to perform opcodes and CSRs.
+  Specify an ISA extension to select the current CX to perform custom
+  instructions/CSRs, and to indicate multiplexing status/errors.
+
+  If necessary the ISA extension supports selection of one of possibly
+  multiple CX instances of the same CX.
+
+  If necessary the ISA extension also supports selection of a current
+  CX (or CX instance) for each of multiple subranges of custom
+  instructions/CSRs.
 
 spec-isa-state privileged state management [3w, 4w, 6w]
 
-  Means to uniformly initialize, save, and restore any CX save record.
-  discuss: Means to support variable sized CX save records.
+  Specify an ISA extension to uniformly initialize, save, and restore
+  any CX state context.
+
+spec-criteria [1w, 1w, 2w]
+
+  Specify criteria for a custom extension to be deemed a composable
+  custom extension.
+
+spec-criteria-mem [1w, 1w, 2w]
+
+  Specify a portable memory model for composable custom extensions.
 
 spec-disc Discovery
 spec-disc-ud Unified Discovery [1w, 2w, 4w]
@@ -52,15 +69,24 @@ spec-disc-ud Unified Discovery [1w, 2w, 4w]
   Add schema for identifying composable custom extension on harts and
   any necessary parameters, such as state size.
 
+  If necessary add schema for identifying multiple CX instances and
+  heterogeneous per-hart accessibility of these CX instances.
+
 spec-disc-dt Devicetree [1w, 2w, 4w]
 
   Add schema for attributes that identify composable custom extension
   on harts and any necessary parameters, such as state size.
 
+  If necessary add schema for identifying multiple CX instances and
+  heterogeneous per-hart accessibility of these CX instances.
+
 spec-disc-acpi ACPI [2w, 3w, 6w]
 
   Add definition for ACPI table for identifying composable custom
   extension on harts and any necessary parameters, such as state size.
+
+  If necessary add support for identifying multiple CX instances and
+  heterogeneous per-hart accessibility of these CX instances.
 
 spec-sbi SBI extension [0d, 0d, 0d]
 
@@ -71,6 +97,9 @@ spec-linux Linux syscall [2w, 3w, 5w]
   Add interfaces to hwprobe, prctl, and sysfs to provide discovery of
   composable custom extensions and related parameters and control of
   extension enablement.
+
+  If necessary add additional interfaces or syscalls to support a multiple
+  CX instance model.
 
 spec-abi User space ABI
 spec-abi-cx Composable custom extension aware calling convention [4w, 6w, 8w]
@@ -96,12 +125,12 @@ spec-abi-legacy Legacy interoperability calling convention [4w, 6w, 8w]
 
 spec-uapi User space API [1w, 4w, 6w]
 
-  Means to discover a CX by CX GUID.
-  Means to request a CX by CX GUID.
-  Means to select CX(s) to perform custom instructions/CSRs.
-  Means to indicate actionable errors.
-  discuss: Means to request another CX instance by CX GUID.
-  discuss: Means to release a CX instance.
+  Specify an API that provides a uniform CX programming model including
+  CX naming, discovery, versioning, CX selection, and error handling)
+  and correct composition of CX libraries.
+
+  If necessary the API will support both the singleton CX model and the
+  multiple CX instance model.
 
 spec-li Logic interface [8w, 12w, 16w]
 
@@ -172,11 +201,15 @@ sw-linux-state Context save and restore dep=spec-isa-state [3w, 4w, 6w]
   state on context switch, allocating memory for state efficiently,
   and reporting errors.
 
+  If necessary add additional support for a multiple CX instance model.
+
 sw-linux-uabi Linux User Space ABI dep=spec-linux [2w, 3w, 5w]
 
   Add support to Linux for specified the user space ABI, including
   hwprobe, prctl, and sysfs support.  Add documentation and self tests
   as appropriate.
+
+  If necessary add additional support for a multiple CX instance model.
 
 sw-abi User space ABI
 sw-abi-binutils binutils support dep=spec-abi-cx,spec-abi-legacy [3w, 4w, 6w]
@@ -194,6 +227,8 @@ sw-abi-glibc glibc support dep=spec-abi [1w, 2w, 4w]
 
   Handle user visible framework hart state as necessary, including in
   setcontext/makecontext and setjmp/longjmp.
+
+  If necessary add additional support for a multiple CX instance model.
 
 sw-uapi User space API
 sw-uapi-glibc glibc support dep=spec-linux,spec-uapi [1w, 2w, 4w]
