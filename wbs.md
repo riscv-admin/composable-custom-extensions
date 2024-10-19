@@ -54,12 +54,17 @@ spec-isa-state privileged state management [3w, 4w, 6w]
   Specify an ISA extension to uniformly initialize, save, and restore
   any CX state context.
 
-spec-criteria [1w, 1w, 2w]
+spec-criteria Composability criteria
 
-  Specify criteria for a custom extension to be deemed a composable
-  custom extension.
+  Specify criteria for a composable custom extension.
 
-spec-criteria-mem [1w, 1w, 2w]
+spec-criteria-ext Basic composability criteria [1w, 1w, 2w]
+
+  Specify basic criteria for a custom extension to be deemed a
+  composable custom extension, excluding any behavior for accessing
+  memory.
+
+spec-criteria-mem Composable memory access behavior [1w, 1w, 2w]
 
   Specify a portable memory model for composable custom extensions.
 
@@ -125,9 +130,9 @@ spec-abi-legacy Legacy interoperability calling convention [4w, 6w, 8w]
 
 spec-uapi User space API [1w, 4w, 6w]
 
-  Specify an API that provides a uniform CX programming model including
-  CX naming, discovery, versioning, CX selection, and error handling)
-  and correct composition of CX libraries.
+  Specify an API that provides a uniform CX programming model
+  including CX naming, discovery, versioning, CX selection, and error
+  handling and correct composition of CX libraries.
 
   If necessary the API will support both the singleton CX model and the
   multiple CX instance model.
@@ -217,11 +222,16 @@ sw-abi-binutils binutils support dep=spec-abi-cx,spec-abi-legacy [3w, 4w, 6w]
   Add support for managing the specified ABI variants to RISC-V ELF
   files, including support in ld, readelf, and objdump.
 
+  Add support to assembler and disassembler for new opcodes, as
+  needed.
+
 sw-abi-gcc gcc support dep=spec-abi-cx,spec-abi-legacy [2w, 3w, 5w]
 
   Add support for saving and restoring composable custom extension
   framework state.  Add support for managing the appropriate ABI
   variants in RISC-V ELF files.
+
+  Add instrinsics for new opcodes, as needed.
 
 sw-abi-glibc glibc support dep=spec-abi [1w, 2w, 4w]
 
