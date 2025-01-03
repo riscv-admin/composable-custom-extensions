@@ -11,9 +11,9 @@ The TG will create ISA and non-ISA specifications that enable practical
 reuse, within a system, of multiple composable custom extensions (CXs),
 CX libraries, and modular CX unit (CXU) hardware. The TG deliverables
 include an optional logic interface spec. Previously (2019-2024) Soft
-CPU SIG [4] designed such an interface [5], CXU-LI. Now the CX TG will
-draft a new extension logic interface spec, informed by this, and by
-other RISC-V extension logic interfaces, to be discussed in this workshop.
+CPU SIG designed such an interface, CXU-LI. Now the CX TG will draft
+a new extension logic interface spec, informed by this, and by other
+RISC-V extension logic interfaces, to be discussed in this workshop.
 
 The meeting will consist of a series of ~25 min talks (incl. Q&A). Each
 talk will showcase one extension logic interface: its purpose,
