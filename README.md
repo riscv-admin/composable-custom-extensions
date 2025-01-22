@@ -1,12 +1,9 @@
 
 # Composable Custom Extensions Task Group
 
-This repository represents an administrative repository for the
-Composable Custom Extensions Task Group.
+All administrative documents for the Composable Custom Extensions Task
+Group are now kept in
+[confluence](https://lf-riscv.atlassian.net/wiki/spaces/CCEX).
 
-- Mailing list ([tech-composable-custom-extensions](https://lists.riscv.org/g/tech-composable-custom-extensions))
-- Draft [Charter](charter.adoc)
-- Specification ([composable-custom-extensions](https://github.com/riscv/composable-custom-extensions))
-- Draft [Requirements](requirements.md)
-- Draft [Development Plan](wbs.md)
-- [Meeting agendas, slides, minutes](meetings/)
+An archive of agendas, slides, and minutes from meetings prior to
+January 2025 is [here](meetings/).
